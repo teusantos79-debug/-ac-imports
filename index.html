@@ -392,7 +392,7 @@
       <a href="#diferenciais" style="font-size:13px;letter-spacing:0.05em;color:var(--muted);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--white)'" onmouseout="this.style.color='var(--muted)'">Diferenciais</a>
       <a href="#sobre" style="font-size:13px;letter-spacing:0.05em;color:var(--muted);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--white)'" onmouseout="this.style.color='var(--muted)'">Sobre</a>
       <a href="#depoimentos" style="font-size:13px;letter-spacing:0.05em;color:var(--muted);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--white)'" onmouseout="this.style.color='var(--muted)'">Avaliações</a>
-      <a href="#" onclick="openPage('kits');return false;" style="font-size:13px;letter-spacing:0.05em;color:var(--gold);text-decoration:none;border:0.5px solid var(--border);padding:6px 14px;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--border)'">Kits &amp; Produtos</a>
+      <a href="javascript:void(0)" onclick="openPage('kits')" style="font-size:13px;letter-spacing:0.05em;color:var(--gold);text-decoration:none;border:0.5px solid var(--border);padding:6px 14px;transition:all 0.2s;cursor:pointer;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--border)'">Kits &amp; Produtos</a>
       <button onclick="openAdmin()" style="display:flex;align-items:center;gap:7px;background:none;border:0.5px solid var(--border);color:var(--muted);font-family:'Syne',sans-serif;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;padding:6px 14px;cursor:pointer;transition:all 0.3s;" onmouseover="this.style.borderColor='var(--gold)';this.style.color='var(--gold)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--muted)'">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
         Admin
@@ -800,18 +800,17 @@ document.querySelectorAll('.bento-card img').forEach(img => {
               <option value="acessorio">Acessório</option>
             </select>
           </div>
-          <div style="position:relative;">
-            <input id="f-img" placeholder="URL da foto (opcional se fizer upload)" style="background:var(--bg2);border:0.5px solid rgba(255,255,255,0.08);color:var(--white);padding:10px 14px;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;outline:none;width:100%;padding-right:130px;"/>
-            <label for="f-img-upload" style="position:absolute;right:0;top:0;bottom:0;display:flex;align-items:center;gap:6px;padding:0 12px;background:var(--bg3);border-left:0.5px solid rgba(255,255,255,0.08);color:var(--gold);font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:background 0.2s;" onmouseover="this.style.background='rgba(201,168,76,0.1)'" onmouseout="this.style.background='var(--bg3)'">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-              Subir foto
-            </label>
-            <input id="f-img-upload" type="file" accept="image/*" style="display:none;" onchange="handleImgUpload(this)"/>
-          </div>
-          <div id="img-preview-wrap" style="display:none;margin-top:8px;position:relative;width:100%;height:160px;background:var(--bg2);border:0.5px solid rgba(255,255,255,0.08);overflow:hidden;">
-            <img id="img-preview" style="width:100%;height:100%;object-fit:cover;" alt="preview"/>
-            <button onclick="clearImg()" style="position:absolute;top:8px;right:8px;background:rgba(0,0,0,0.7);border:none;color:white;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;">✕</button>
-            <div style="position:absolute;bottom:8px;left:8px;background:rgba(0,0,0,0.7);color:var(--gold);font-size:10px;font-family:'Syne',sans-serif;letter-spacing:0.1em;text-transform:uppercase;padding:3px 8px;">Foto carregada ✓</div>
+          <div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+              <div style="font-size:11px;color:var(--muted);letter-spacing:0.05em;">Fotos do produto (até 6)</div>
+              <label for="f-img-upload" style="display:flex;align-items:center;gap:6px;padding:6px 14px;background:var(--bg3);border:0.5px solid rgba(255,255,255,0.08);color:var(--gold);font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:background 0.2s;" onmouseover="this.style.background='rgba(201,168,76,0.1)'" onmouseout="this.style.background='var(--bg3)'">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                Subir fotos
+              </label>
+              <input id="f-img-upload" type="file" accept="image/*" multiple style="display:none;" onchange="handleImgUpload(this)"/>
+            </div>
+            <div id="img-thumbs" style="display:flex;gap:8px;flex-wrap:wrap;min-height:0;"></div>
+            <input id="f-img" type="hidden"/>
           </div>
           <input id="f-desc" placeholder="Descrição curta do produto" style="background:var(--bg2);border:0.5px solid rgba(255,255,255,0.08);color:var(--white);padding:10px 14px;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;outline:none;width:100%;"/>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;">
@@ -856,8 +855,19 @@ document.querySelectorAll('.bento-card img').forEach(img => {
   position: relative;
 }
 .prod-card:hover { border-color: var(--border); transform: translateY(-4px); }
-.prod-card img { width:100%; height:240px; object-fit:cover; display:block; transition: transform 0.5s; }
-.prod-card:hover img { transform: scale(1.04); }
+.prod-carousel { position:relative; overflow:hidden; height:240px; }
+.prod-carousel-track { display:flex; height:100%; transition: transform 0.4s ease; }
+.prod-carousel-track img { width:100%; height:240px; object-fit:cover; flex-shrink:0; display:block; }
+.carousel-btn { position:absolute; top:50%; transform:translateY(-50%); background:rgba(0,0,0,0.6); border:none; color:white; width:30px; height:30px; cursor:pointer; font-size:16px; display:flex; align-items:center; justify-content:center; z-index:2; transition:background 0.2s; }
+.carousel-btn:hover { background:rgba(201,168,76,0.8); }
+.carousel-btn.prev { left:8px; }
+.carousel-btn.next { right:8px; }
+.carousel-dots { position:absolute; bottom:8px; left:50%; transform:translateX(-50%); display:flex; gap:5px; }
+.carousel-dot { width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,0.4); cursor:pointer; transition:background 0.2s; }
+.carousel-dot.active { background:var(--gold); }
+.thumb-wrap { position:relative; width:72px; height:72px; flex-shrink:0; }
+.thumb-wrap img { width:72px; height:72px; object-fit:cover; border:0.5px solid rgba(255,255,255,0.08); display:block; }
+.thumb-wrap .thumb-del { position:absolute; top:2px; right:2px; background:rgba(0,0,0,0.75); border:none; color:white; width:18px; height:18px; border-radius:50%; cursor:pointer; font-size:11px; display:flex; align-items:center; justify-content:center; }
 .prod-info { padding: 1.2rem; }
 .prod-badge {
   display: inline-block;
@@ -952,20 +962,26 @@ function renderGrid() {
   if(filtered.length === 0) { emptyMsg.style.display = 'block'; return; }
   emptyMsg.style.display = 'none';
   filtered.forEach(p => {
+    const imgs = p.imgs && p.imgs.length > 0 ? p.imgs : (p.img ? [p.img] : ['https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=600&auto=format&fit=crop&q=80']);
+    const fallback = 'https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=600&auto=format&fit=crop&q=80';
+    const carouselId = 'car-' + p.id;
+    const multiImg = imgs.length > 1;
+    const imgSlides = imgs.map(src => `<img src="${src||fallback}" alt="${p.name}" onerror="this.src='${fallback}'"/>`).join('');
+    const dots = multiImg ? `<div class="carousel-dots">${imgs.map((_,i)=>`<div class="carousel-dot${i===0?' active':''}" onclick="goSlide('${carouselId}',${i})"></div>`).join('')}</div>` : '';
+    const btns = multiImg ? `<button class="carousel-btn prev" onclick="prevSlide('${carouselId}')">&#8249;</button><button class="carousel-btn next" onclick="nextSlide('${carouselId}')">&#8250;</button>` : '';
     const card = document.createElement('div');
     card.className = 'prod-card';
     card.innerHTML = `
-      <div style="overflow:hidden;position:relative;">
-        <img src="${p.img || 'https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=600&auto=format&fit=crop&q=80'}" alt="${p.name}" onerror="this.src='https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=600&auto=format&fit=crop&q=80'"/>
+      <div class="prod-carousel" id="${carouselId}" data-idx="0" data-total="${imgs.length}">
+        <div class="prod-carousel-track">${imgSlides}</div>
+        ${btns}${dots}
         ${p.badge ? `<div class="prod-badge">${p.badge}</div>` : ''}
       </div>
       <div class="prod-info">
         <div class="prod-cat">${catLabels[p.cat] || p.cat}</div>
         <div class="prod-name">${p.name}</div>
         ${p.desc ? `<div class="prod-desc">${p.desc}</div>` : ''}
-        <div style="display:flex;align-items:center;justify-content:space-between;">
-          <div class="prod-price">${p.price}</div>
-        </div>
+        <div class="prod-price">${p.price}</div>
         <a href="${p.link || 'https://wa.me/message/GRTYEKP3PU3OO1'}" target="_blank" class="prod-btn">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.975-1.418A9.954 9.954 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a7.946 7.946 0 01-4.051-1.105l-.29-.172-3.01.859.873-2.944-.19-.302A7.944 7.944 0 014 12c0-4.418 3.582-8 8-8s8 3.582 8 8-3.582 8-8 8z"/></svg>
           Pedir via WhatsApp
@@ -973,6 +989,26 @@ function renderGrid() {
       </div>`;
     grid.appendChild(card);
   });
+}
+
+function goSlide(id, idx) {
+  const car = document.getElementById(id);
+  if(!car) return;
+  car.dataset.idx = idx;
+  car.querySelector('.prod-carousel-track').style.transform = `translateX(-${idx*100}%)`;
+  car.querySelectorAll('.carousel-dot').forEach((d,i) => d.classList.toggle('active', i===idx));
+}
+function nextSlide(id) {
+  const car = document.getElementById(id);
+  const total = parseInt(car.dataset.total);
+  const idx = (parseInt(car.dataset.idx)+1) % total;
+  goSlide(id, idx);
+}
+function prevSlide(id) {
+  const car = document.getElementById(id);
+  const total = parseInt(car.dataset.total);
+  const idx = (parseInt(car.dataset.idx)-1+total) % total;
+  goSlide(id, idx);
 }
 
 function filterProducts(cat) {
@@ -983,45 +1019,75 @@ function filterProducts(cat) {
 
 // ── PAGE NAV ──
 function openPage(id) {
-  document.getElementById('page-'+id).style.display = 'block';
-  document.body.style.overflow = 'hidden';
-  renderGrid();
+  var el = document.getElementById('page-'+id);
+  if(el) {
+    el.style.display = 'block';
+    el.style.zIndex = '300';
+    document.body.style.overflow = 'hidden';
+    renderGrid();
+  }
 }
 function closePage() {
-  document.getElementById('page-kits').style.display = 'none';
+  var el = document.getElementById('page-kits');
+  if(el) el.style.display = 'none';
   document.body.style.overflow = '';
 }
 
 // ── ADMIN ──
+let uploadedImgs = [];
+
 function handleImgUpload(input) {
-  const file = input.files[0];
-  if(!file) return;
-  const reader = new FileReader();
-  reader.onload = function(e) {
-    const base64 = e.target.result;
-    document.getElementById('f-img').value = base64;
-    document.getElementById('img-preview').src = base64;
-    document.getElementById('img-preview-wrap').style.display = 'block';
-  };
-  reader.readAsDataURL(file);
+  const files = Array.from(input.files);
+  const remaining = 6 - uploadedImgs.length;
+  const toLoad = files.slice(0, remaining);
+  toLoad.forEach(file => {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      uploadedImgs.push(e.target.result);
+      renderThumbs();
+    };
+    reader.readAsDataURL(file);
+  });
+  input.value = '';
+}
+
+function renderThumbs() {
+  const wrap = document.getElementById('img-thumbs');
+  wrap.innerHTML = '';
+  uploadedImgs.forEach((src, i) => {
+    const div = document.createElement('div');
+    div.className = 'thumb-wrap';
+    div.innerHTML = `<img src="${src}" alt="foto ${i+1}"/><button class="thumb-del" onclick="removeThumb(${i})">✕</button>`;
+    wrap.appendChild(div);
+  });
+}
+
+function removeThumb(i) {
+  uploadedImgs.splice(i, 1);
+  renderThumbs();
 }
 
 function clearImg() {
-  document.getElementById('f-img').value = '';
+  uploadedImgs = [];
+  renderThumbs();
   document.getElementById('f-img-upload').value = '';
-  document.getElementById('img-preview').src = '';
-  document.getElementById('img-preview-wrap').style.display = 'none';
 }
 
-
-  document.getElementById('admin-overlay').style.display = 'block';
-  document.getElementById('admin-login').style.display = 'block';
-  document.getElementById('admin-panel').style.display = 'none';
-  document.getElementById('pw-error').style.display = 'none';
-  document.getElementById('admin-pw').value = '';
+function openAdmin() {
+  var overlay = document.getElementById('admin-overlay');
+  var login = document.getElementById('admin-login');
+  var panel = document.getElementById('admin-panel');
+  var err = document.getElementById('pw-error');
+  var pw = document.getElementById('admin-pw');
+  if(overlay) overlay.style.display = 'block';
+  if(login) login.style.display = 'block';
+  if(panel) panel.style.display = 'none';
+  if(err) err.style.display = 'none';
+  if(pw) pw.value = '';
 }
 function closeAdmin() {
-  document.getElementById('admin-overlay').style.display = 'none';
+  var overlay = document.getElementById('admin-overlay');
+  if(overlay) overlay.style.display = 'none';
 }
 function checkPw() {
   if(document.getElementById('admin-pw').value === ADMIN_PW) {
@@ -1057,12 +1123,12 @@ function addProduct() {
   const name = document.getElementById('f-name').value.trim();
   const price = document.getElementById('f-price').value.trim();
   const cat = document.getElementById('f-cat').value;
-  const img = document.getElementById('f-img').value.trim();
   const desc = document.getElementById('f-desc').value.trim();
   const badge = document.getElementById('f-badge').value.trim();
   const link = document.getElementById('f-link').value.trim();
   if(!name || !price) { alert('Nome e preço são obrigatórios.'); return; }
-  products.unshift({ id: Date.now(), name, price, cat, img, desc, badge, link: link || 'https://wa.me/message/GRTYEKP3PU3OO1' });
+  const imgs = uploadedImgs.length > 0 ? [...uploadedImgs] : [''];
+  products.unshift({ id: Date.now(), name, price, cat, imgs, desc, badge, link: link || 'https://wa.me/message/GRTYEKP3PU3OO1' });
   saveProducts();
   ['f-name','f-price','f-desc','f-badge','f-link'].forEach(id => document.getElementById(id).value='');
   clearImg();
